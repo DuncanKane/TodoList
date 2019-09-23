@@ -1,0 +1,20 @@
+﻿@model IEnumerable<TodoList.Models.TodoList>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <div>
+        There are @Model.Count() tasks in the Todo List.
+    </div>
+</div>
+
+<ul>
+    @foreach (var TodoItem in Model)
+    {
+        <li>@TodoItem.TaskName</li>
+        <li>@TodoItem.TaskDescription</li>
+    }
+</ul>
