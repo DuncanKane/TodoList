@@ -14,9 +14,12 @@ namespace TodoList.App_Start
         internal static void RegisterContainer()
         {
             var builder = new ContainerBuilder();
+
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
             //need to link to the DB 'SqlTodoListData'
-            builder.RegisterType<ITodoListData>().As<SqlTodoListData>().InstancePerRequest();
+            builder.RegisterType<SqlTodoListData>().As<ITodoListData>().InstancePerRequest();
             builder.RegisterType<TodoListContext>().InstancePerRequest();
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
