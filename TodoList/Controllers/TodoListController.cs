@@ -47,6 +47,7 @@ namespace TodoList.Controllers
             if (ModelState.IsValid)
             {
                 db.Add(todoList);
+                TempData["Message"] = "The Task has been added to the List!";
                 return RedirectToAction("Details", new { id = todoList.Id });
             }
             return View();
@@ -70,6 +71,7 @@ namespace TodoList.Controllers
             if (ModelState.IsValid)
             {
                 db.Update(todoList);
+                TempData["Message"]="The Task has been changed!";
                 return RedirectToAction("Details", new { id = todoList.Id });
             }
             return View(todoList);
@@ -91,6 +93,7 @@ namespace TodoList.Controllers
         public ActionResult Delete(int id, FormCollection form)
         {
             db.Delete(id);
+            TempData["Message"] = "The Task has been deleted!";
             return RedirectToAction("Index");
         }
     }
